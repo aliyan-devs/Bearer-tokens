@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: fieldnotes-blog
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm ci --prefix server && npm ci --prefix client && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
